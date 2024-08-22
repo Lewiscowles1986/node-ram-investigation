@@ -17,5 +17,14 @@ In the thread there was a non-working code example; one invitation / plea from t
 
 Then I had a break. But, perhaps early morning exercise infused, I decided that there were some issues with the test.
 
+<details>
+<summary>The script</summary>
+
+```
+kill -15 $(pgrep node); rm -f $(node --version).log && for run in {1..100}; do; node index.js >> $(node --version).log & sleep 1 && kill -15 $(pgrep node) >/dev/null; done;
+```
+
+</details>
+
 NodeJS isn't for running express. Sure you can do that... But it's for a lot more; so I wanted to see what the base-line was between NodeJS 14 and 20.
 
