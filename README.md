@@ -28,3 +28,31 @@ kill -15 $(pgrep node); rm -f $(node --version).log && for run in {1..100}; do; 
 
 NodeJS isn't for running express. Sure you can do that... But it's for a lot more; so I wanted to see what the base-line was between NodeJS 14 and 20.
 
+## A simpler test
+
+The empty folder is not an empty index.js or NodeJS evaluating a script. Those could be interesting too, but it is as bare minimum as I could expect.
+
+1. I refactored the diretory a little
+2. I made a new folder, which I called `empty` (naming is hard)
+3. I modified my script to run as this iteration didn't need to kill any processes
+4. I uploaded my results.
+
+<details>
+<summary>The script</summary>
+
+```
+rm -f $(node --version).log && for run in {1..100}; do; node index.js >> $(node --version).log; done;
+```
+
+</details>
+
+## Spoilers
+
+Express takes < 64MB RAM in the initial tests in every version of NodeJS. It's not an Operating Systems design language. I think 64MB is great!
+
+CLI with no external dependencies takes < 32 MB RAM in initial tests in every version of NodeJS. And **NodeJS RAM usage is very consistent across the runtimes for this test**
+
+## Purpose
+
+Mostly to regularly commit to my own git; do a bit of public journalling.
+To create a place others can PR improvements, challenge methodology via issues.
